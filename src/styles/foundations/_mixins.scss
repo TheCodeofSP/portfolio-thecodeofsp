@@ -1,0 +1,237 @@
+@use "./tokens" as t;
+
+/* =========================================================
+   FOUNDATIONS — MIXINS
+   Base neutre commune à tous les univers
+   ========================================================= */
+
+/* =============================
+   Breakpoints
+============================= */
+
+@mixin mobile-up {
+  @media (min-width: t.$mobile) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: t.$tablet) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: t.$desktop) {
+    @content;
+  }
+}
+
+/* =============================
+   Layout
+============================= */
+
+@mixin container($max: t.$container-l, $padding: t.$spacing-s) {
+  width: 100%;
+  max-width: $max;
+  margin-inline: auto;
+  padding-inline: $padding;
+}
+
+@mixin page-layout(
+  $max: t.$container-l,
+  $padding-mobile: t.$spacing-s,
+  $padding-tablet: t.$spacing-s,
+  $padding-desktop: t.$spacing-m,
+  $gap-mobile: t.$spacing-l,
+  $gap-tablet: t.$spacing-xl,
+  $gap-desktop: t.$spacing-xl
+) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-mobile;
+
+  @include container($max, $padding-mobile);
+
+  @include tablet-up {
+    gap: $gap-tablet;
+    padding-inline: $padding-tablet;
+  }
+
+  @include desktop-up {
+    gap: $gap-desktop;
+    padding-inline: $padding-desktop;
+  }
+}
+
+@mixin section-layout(
+  $gap-mobile: t.$spacing-xs,
+  $gap-tablet: t.$spacing-xs,
+  $gap-desktop: t.$spacing-s,
+  $align: stretch
+) {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-mobile;
+  align-items: $align;
+
+  @include tablet-up {
+    gap: $gap-tablet;
+  }
+
+  @include desktop-up {
+    gap: $gap-desktop;
+  }
+}
+
+@mixin content-flow(
+  $gap-mobile: t.$spacing-s,
+  $gap-tablet: t.$spacing-s,
+  $gap-desktop: t.$spacing-s
+) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-mobile;
+
+  @include tablet-up {
+    gap: $gap-tablet;
+  }
+
+  @include desktop-up {
+    gap: $gap-desktop;
+  }
+}
+
+@mixin cluster(
+  $gap: t.$spacing-s,
+  $justify: flex-start,
+  $align: center,
+  $wrap: wrap
+) {
+  display: flex;
+  flex-wrap: $wrap;
+  gap: $gap;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+/* =============================
+   Positioning
+============================= */
+
+@mixin absolute-fill($z: null) {
+  position: absolute;
+  inset: 0;
+
+  @if $z != null {
+    z-index: $z;
+  }
+}
+
+/* =============================
+   Typography helpers
+============================= */
+
+@mixin text-title {
+  font-family: var(--font-title);
+  line-height: t.$line-height-tight;
+  letter-spacing: t.$tracking-tight;
+}
+
+@mixin text-subtitle {
+  font-family: var(--font-subtitle);
+  line-height: t.$line-height-normal;
+}
+
+@mixin text-body {
+  font-family: var(--font-body);
+  line-height: t.$line-height-relaxed;
+}
+
+@mixin eyebrow {
+  font-family: var(--font-subtitle);
+  font-size: t.$font-size-s;
+  font-weight: t.$weight-bold;
+  text-transform: uppercase;
+  letter-spacing: t.$tracking-wider;
+}
+
+@mixin window-label {
+  font-family: var(--font-subtitle);
+  font-size: t.$font-size-xs;
+  font-weight: t.$weight-bold;
+  text-transform: uppercase;
+  letter-spacing: t.$tracking-wider;
+}
+
+
+/* =============================
+   Interaction / states
+============================= */
+
+@mixin transition-base(
+  $properties: all,
+  $duration: var(--transition-medium),
+  $timing: ease
+) {
+  transition: $properties $duration $timing;
+}
+
+@mixin focus-ring($color: var(--accent-color), $offset: 3px, $width: 2px) {
+  &:focus-visible {
+    outline: $width solid $color;
+    outline-offset: $offset;
+  }
+}
+
+/* =============================
+   Reset / base UI
+============================= */
+
+@mixin button-reset {
+  appearance: none;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+@mixin link-reset {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =============================
+   Surfaces neutres
+============================= */
+
+@mixin surface-base(
+  $padding: 1.2rem,
+  $radius: var(--radius-card, #{t.$radius-m})
+) {
+  padding: $padding;
+  border-radius: $radius;
+  background: var(--background-card);
+  box-shadow: var(--shadow-light);
+  width: 100%;
+}
+
+@mixin panel-base(
+  $padding: 1.2rem,
+  $radius: var(--radius-panel, #{t.$radius-l})
+) {
+  padding: $padding;
+  border-radius: $radius;
+  background: var(--background-panel, var(--background-card));
+  box-shadow: var(--shadow-light);
+}
+
+/* =============================
+   Utilities
+============================= */
+

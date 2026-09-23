@@ -1,0 +1,37 @@
+@use "./styles/foundations/foundations" as f;
+
+#root {
+  min-height: 100vh;
+}
+
+/* =============================
+   THEMES
+============================= */
+
+html.theme-accueillant,
+body.theme-accueillant,
+html.theme-affirme,
+body.theme-affirme,
+html.theme-minimaliste,
+body.theme-minimaliste {
+  background-color: var(--background-main);
+  color: var(--color-main);
+
+  @include f.transition-base(
+    background-color color,
+    f.$duration-medium,
+    f.$ease-soft
+  );
+}
+
+html.theme-accueillant,
+body.theme-accueillant,
+html.theme-minimaliste,
+body.theme-minimaliste {
+  color-scheme: light;
+}
+
+html.theme-affirme,
+body.theme-affirme {
+  color-scheme: dark;
+}

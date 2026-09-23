@@ -1,0 +1,237 @@
+@use "../../foundations/tokens" as t;
+@use "../../foundations/mixins" as f;
+
+/* =========================================================
+   UNIVERS — AFFIRME — MIXINS NIVEAU 2
+   Inspiration : terminal / fenêtres / cockpit / SaaS ambitieux
+   ========================================================= */
+
+/* =============================
+   Liens / textes interactifs
+============================= */
+
+@mixin hover-affirme {
+  color: var(--accent-color);
+  text-decoration: none;
+  text-shadow:
+    0 0 4px rgba(var(--accent-color-rgb), 0.7),
+    0 0 12px rgba(var(--accent-color-rgb), 0.45);
+}
+
+@mixin hover-affirme-tag {
+  color: var(--accent-color);
+  text-decoration: none;
+  text-shadow:
+    0 0 2px rgba(var(--accent-color-rgb), 0.6),
+    0 0 6px rgba(var(--accent-color-rgb), 0.35);
+}
+
+@mixin title-affirme {
+  color: var(--accent-color-2);
+  text-shadow:
+    0 0 4px rgba(var(--accent-color-2-rgb), 0.7),
+    0 0 14px rgba(var(--accent-color-2-rgb), 0.35);
+}
+
+@mixin eyebrow-affirme {
+  color: var(--accent-color);
+}
+
+/* =============================
+   Surfaces / panels
+============================= */
+
+@mixin panel-terminal($padding: 1.25rem) {
+  @include f.panel-base($padding, var(--radius-panel));
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-medium);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(var(--primary-color-rgb), 0.06),
+      rgba(var(--accent-color-rgb), 0.025)
+    ),
+    var(--background-panel);
+
+  &::before {
+    content: "";
+    @include f.absolute-fill;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px var(--frame-glow);
+  }
+}
+
+/* =============================
+   Hover / cards
+============================= */
+
+@mixin card-hover-affirme {
+  @include f.transition-base(
+    transform box-shadow border-color filter,
+    var(--transition-fast),
+    ease-out
+  );
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
+    box-shadow:
+      0 0 0 1px rgba(var(--accent-color-rgb), 0.14) inset,
+      var(--shadow-heavy);
+    filter: brightness(1.03);
+  }
+}
+
+/* =============================
+   Boutons
+============================= */
+
+@mixin button-affirme {
+  @include f.link-reset;
+  @include f.transition-base(all, var(--transition-fast), ease-out);
+  @include f.focus-ring(var(--primary-color));
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: t.$button-height-m;
+  padding: 0.9rem 1.35rem;
+  border-radius: var(--radius-button);
+  font-family: var(--font-subtitle);
+  font-weight: t.$weight-bold;
+  border: var(--cta-primary-border);
+  background: var(--cta-primary-bg);
+  color: var(--cta-primary-color);
+  box-shadow: var(--shadow-light);
+
+  &:hover {
+    transform: translateY(-1px);
+    background: var(--accent-color);
+    color: var(--background-main);
+    box-shadow: var(--shadow-medium);
+  }
+
+  &:active {
+    transform: translateY(0);
+    background: var(--accent-color);
+    color: var(--background-main);
+  }
+}
+
+@mixin button-secondary-affirme {
+  @include f.link-reset;
+  @include f.transition-base(all, var(--transition-fast), ease-out);
+  @include f.focus-ring(var(--primary-color));
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: t.$button-height-m;
+  padding: 0.9rem 1.35rem;
+  border-radius: var(--radius-button);
+  font-family: var(--font-subtitle);
+  font-weight: t.$weight-bold;
+  border: var(--cta-secondary-border);
+  background: var(--cta-secondary-bg);
+  color: var(--cta-secondary-color);
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 16px rgba(var(--accent-color-rgb), 0.18);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* =============================
+   Décor terminal
+============================= */
+
+@mixin linear-gradient-affirme {
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--accent-color)
+  );
+}
+
+/* =============================
+   Transition générique du thème
+============================= */
+
+/* =============================
+   Fenêtres / surfaces dédiées
+============================= */
+
+@mixin terminal-window($padding: 1.2rem, $header-height: 38px) {
+  @include f.surface-base(0, var(--radius-card));
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-card);
+  background: var(--background-card);
+  box-shadow:
+    0 0 0 1px rgba(var(--primary-color-rgb), 0.12) inset,
+    var(--shadow-light);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: $header-height;
+    border-bottom: 1px solid rgba(var(--primary-color-rgb), 0.14);
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(var(--primary-color-rgb), 0.09),
+        rgba(var(--accent-color-rgb), 0.03)
+      ),
+      var(--background-panel);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 13px;
+    left: 14px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--window-control-close);
+    box-shadow:
+      14px 0 0 var(--window-control-minimize),
+      28px 0 0 var(--window-control-expand);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  padding: calc(#{$padding} + #{$header-height}) $padding $padding;
+}
+
+@mixin window-label-affirme {
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 56px;
+  z-index: 4;
+  max-width: calc(100% - 72px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font-family: var(--font-subtitle);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  pointer-events: none;
+}

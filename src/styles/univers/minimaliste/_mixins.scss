@@ -1,0 +1,211 @@
+@use "../../foundations/tokens" as t;
+@use "../../foundations/mixins" as f;
+
+/* =========================================================
+   UNIVERS — MINIMALISTE — MIXINS NIVEAU 2
+   Inspiration : process industriel / précision / efficacité
+   ========================================================= */
+
+/* =============================
+   Liens / textes interactifs
+============================= */
+
+@mixin hover-minimaliste {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+/* =============================
+   Surfaces
+============================= */
+
+@mixin card-process($padding: 1.2rem) {
+  @include f.surface-base($padding, var(--radius-card));
+  position: relative;
+  border: 1px solid var(--border-subtle);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0)
+    ),
+    var(--background-card);
+  box-shadow: var(--shadow-light);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background-image:
+      linear-gradient(
+        to right,
+        rgba(var(--primary-color-rgb), 0.035) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(var(--primary-color-rgb), 0.035) 1px,
+        transparent 1px
+      );
+    background-size: 20px 20px;
+    opacity: calc(var(--grid-opacity) * 0.35);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    opacity: var(--panel-highlight-opacity);
+  }
+}
+
+@mixin panel-process($padding: 1.25rem) {
+  @include f.panel-base($padding, var(--radius-panel));
+  position: relative;
+  border: 1px solid var(--border-medium);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.88) 0%,
+      rgba(255, 255, 255, 0.68) 100%
+    ),
+    var(--background-card);
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background-image:
+      linear-gradient(
+        to right,
+        rgba(var(--primary-color-rgb), 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(var(--primary-color-rgb), 0.04) 1px,
+        transparent 1px
+      );
+    background-size: 28px 28px;
+    opacity: calc(var(--grid-opacity) * 0.42);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 0 0 1px rgba(var(--primary-color-rgb), 0.015);
+    opacity: var(--panel-highlight-opacity);
+  }
+}
+
+/* =============================
+   Hover / active cards
+============================= */
+
+@mixin card-hover-minimaliste {
+  @include f.transition-base(
+    transform border-color background-color box-shadow,
+    var(--transition-fast),
+    ease-out
+  );
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(var(--accent-color-rgb), 0.28);
+    box-shadow:
+      0 8px 24px rgba(15, 18, 22, 0.08),
+      0 0 0 1px rgba(var(--accent-color-rgb), 0.04);
+  }
+}
+
+/* =============================
+   Boutons
+============================= */
+
+@mixin button-minimaliste {
+  @include f.link-reset;
+  @include f.transition-base(all, var(--transition-fast), ease-out);
+  @include f.focus-ring(var(--accent-color));
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: t.$button-height-m;
+  padding: 0.9rem 1.35rem;
+  border-radius: var(--radius-button);
+  font-family: var(--font-ui);
+  font-weight: t.$weight-semibold;
+  border: var(--cta-primary-border);
+  background: var(--cta-primary-bg);
+  color: var(--cta-primary-color);
+
+  &:hover {
+    transform: translateY(-1px);
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--light-color);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin button-secondary-minimaliste {
+  @include f.link-reset;
+  @include f.transition-base(all, var(--transition-fast), ease-out);
+  @include f.focus-ring(var(--accent-color));
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: t.$button-height-m;
+  padding: 0.9rem 1.35rem;
+  border-radius: var(--radius-button);
+  font-family: var(--font-ui);
+  font-weight: t.$weight-semibold;
+  border: var(--cta-secondary-border);
+  background: var(--cta-secondary-bg);
+  color: var(--cta-secondary-color);
+
+  &:hover {
+    transform: translateY(-1px);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background: rgba(var(--accent-color-rgb), 0.04);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* =============================
+   Éléments de structure
+============================= */
+
+@mixin title-minimaliste {
+  @include f.text-title;
+  color: var(--color-text-strong);
+  letter-spacing: t.$tracking-tight;
+}
+
+/* =============================
+   Transition générique du thème
+============================= */
+

@@ -1,0 +1,200 @@
+/* =========================================================
+   FOUNDATIONS — TOKENS NIVEAU 1
+   Base neutre commune à tous les univers
+   ========================================================= */
+
+/* =============================
+   Typography scale
+============================= */
+
+$font-size-2xs: 0.25rem;
+$font-size-xs: 0.50rem;
+$font-size-s: 1rem;
+$font-size-m: 1.50rem;
+$font-size-l: 2rem;
+$font-size-xl: 2.5rem;
+$font-size-2xl: 3rem;
+$font-size-3xl: 3.5rem;
+$font-size-4xl: 4rem;
+$font-size-5xl: 4.5rem; 
+
+/* Alias pratiques */
+$font-size-text: $font-size-s;
+$font-size-text-large: $font-size-m;
+$font-size-subtitle: $font-size-l;
+$font-size-title: $font-size-xl;
+$font-size-title-large: $font-size-4xl;
+
+$font-size-slogan: $font-size-l;
+
+/* =============================
+   Line heights
+============================= */
+
+$line-height-tight: 1.1;
+$line-height-snug: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.7;
+$line-height-loose: 1.9;
+
+/* =============================
+   Font weights
+============================= */
+
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semibold: 600;
+$weight-bold: 700;
+$weight-black: 800;
+
+/* =============================
+   Letter spacing
+============================= */
+
+$tracking-tight: -0.02em;
+$tracking-normal: 0;
+$tracking-wide: 0.05em;
+$tracking-wider: 0.08em;
+$tracking-widest: 0.12em;
+
+/* =============================
+   Spacing
+============================= */
+
+$spacing-3xs: 0.25rem;
+$spacing-2xs: 0.375rem;
+$spacing-xs: 0.5rem;
+$spacing-s: 1rem;
+$spacing-m: 2rem;
+$spacing-l: 3rem;
+$spacing-xl: 4rem;
+$spacing-2xl: 5rem;
+$spacing-3xl: 6rem;
+
+/* =============================
+   Radius
+============================= */
+
+$radius-xs: 6px;
+$radius-s: 12px;
+$radius-m: 20px;
+$radius-l: 28px;
+$radius-xl: 36px;
+$radius-pill: 999px;
+
+/* =============================
+   Borders
+============================= */
+
+$border-width-thin: 1px;
+$border-width-medium: 2px;
+$border-width-strong: 3px;
+
+/* =============================
+   Shadows
+============================= */
+
+$shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.12);
+$shadow-strong: 0 16px 40px rgba(0, 0, 0, 0.18);
+
+/* =============================
+   Motion
+============================= */
+
+$duration-fast: 160ms;
+$duration-medium: 280ms;
+$duration-slow: 420ms;
+$duration-extra-slow: 700ms;
+
+$ease-standard: ease;
+$ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+$ease-snappy: cubic-bezier(0.2, 0.8, 0.2, 1);
+$ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+/* =============================
+   Layout
+============================= */
+
+$container-xs: 480px;
+$container-s: 720px;
+$container-m: 960px;
+$container-l: 1150px;
+$container-xl: 1280px;
+$container-2xl: 1440px;
+
+/* =============================
+   Sections
+============================= */
+
+$section-padding-y-mobile: 3rem;
+$section-padding-y-tablet: 4rem;
+$section-padding-y-desktop: 5rem;
+
+$section-gap-mobile: $spacing-m;
+$section-gap-tablet: $spacing-l;
+$section-gap-desktop: $spacing-xl;
+
+/* =============================
+   UI sizes
+============================= */
+
+$button-height-s: 40px;
+$button-height-m: 48px;
+$button-height-l: 56px;
+
+$icon-size-s: 16px;
+$icon-size-m: 20px;
+$icon-size-l: 24px;
+$icon-size-xl: 32px;
+
+/* =============================
+   Breakpoints
+============================= */
+
+$mobile: 768px;
+$tablet: 1024px;
+$desktop: 1200px;
+$wide: 1440px;
+
+/* =============================
+   Z-index
+============================= */
+
+$z-base: 1;
+$z-decor: 5;
+$z-content: 10;
+$z-sticky: 20;
+$z-overlay: 50;
+$z-menu: 100;
+$z-modal: 1000;
+
+/* =============================
+   Export CSS variables (optionnel)
+============================= */
+
+:root {
+  --mobile: #{$mobile};
+  --tablet: #{$tablet};
+  --desktop: #{$desktop};
+  --wide: #{$wide};
+
+  --container-xs: #{$container-xs};
+  --container-s: #{$container-s};
+  --container-m: #{$container-m};
+  --container-l: #{$container-l};
+  --container-xl: #{$container-xl};
+  --container-2xl: #{$container-2xl};
+
+  --radius-xs: #{$radius-xs};
+  --radius-s: #{$radius-s};
+  --radius-m: #{$radius-m};
+  --radius-l: #{$radius-l};
+  --radius-xl: #{$radius-xl};
+  --radius-pill: #{$radius-pill};
+
+  --duration-fast: #{$duration-fast};
+  --duration-medium: #{$duration-medium};
+  --duration-slow: #{$duration-slow};
+  --duration-extra-slow: #{$duration-extra-slow};
+}

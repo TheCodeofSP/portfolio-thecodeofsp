@@ -1,0 +1,205 @@
+/* =========================================================
+   FOUNDATIONS — ANIMATIONS NIVEAU 1
+   Animations génériques, sobres et réutilisables
+   ========================================================= */
+
+/* =============================
+   Fade
+============================= */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* =============================
+   Slide
+============================= */
+
+@keyframes slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-left-fade {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-right-fade {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =============================
+   Scale
+============================= */
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+/* =============================
+   Float / subtle motion
+============================= */
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* =============================
+   Rotation légère
+============================= */
+
+@keyframes rotate-soft {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(3deg);
+  }
+}
+
+/* =============================
+   Legacy utilitaires
+   (si tu veux garder l’idée de fly-in/fly-out)
+============================= */
+
+@keyframes fly-in {
+  0% {
+    transform: scale(0.7) translateY(-36px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fly-out {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.7) translateY(-36px);
+    opacity: 0;
+  }
+}
+
+@keyframes slogan-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes contact-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .theme-accueillant .reveal,
+  .theme-affirme .reveal,
+  .theme-minimaliste .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}

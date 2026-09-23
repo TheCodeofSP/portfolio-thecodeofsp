@@ -1,0 +1,164 @@
+@use "../../foundations/tokens" as t;
+@use "../../foundations/mixins" as f;
+
+/* =========================================================
+   UNIVERS — ACCUEILLANT — MIXINS NIVEAU 2
+   Inspiration : journal vintage / accueillant / humain
+   ========================================================= */
+
+/* =============================
+   Liens / textes interactifs
+============================= */
+
+@mixin hover-accueillant {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+@mixin tag-hover-accueillant {
+  color: var(--accent-color);
+  font-weight: t.$weight-bold;
+}
+
+/* =============================
+   Surfaces
+============================= */
+
+@mixin card-editoriale($padding: 1.2rem) {
+  @include f.surface-base($padding, var(--radius-card));
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.36),
+      rgba(255, 255, 255, 0.06)
+    ),
+    var(--background-card);
+  box-shadow: var(--shadow-light);
+
+  &::before {
+    content: "";
+    @include f.absolute-fill;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    opacity: var(--card-highlight-opacity);
+  }
+}
+
+/* =============================
+   Hover / active cards
+============================= */
+
+@mixin card-hover-accueillant {
+  @include f.transition-base(
+    transform box-shadow border-color,
+    var(--transition-medium),
+    ease
+  );
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--border-medium);
+  }
+}
+
+/* =============================
+   Boutons
+============================= */
+
+@mixin button-accueillant {
+  @include f.link-reset;
+  @include f.transition-base(all, var(--transition-medium), ease);
+  @include f.focus-ring(var(--accent-color));
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: t.$button-height-m;
+  border-radius: var(--radius-button);
+  font-family: var(--font-ui);
+  font-weight: t.$weight-bold;
+  border: var(--cta-primary-border);
+  background: var(--cta-primary-bg);
+  color: var(--cta-primary-color);
+
+  &:hover {
+    transform: translateY(-1px);
+    color: var(--accent-color);
+  }
+
+  &:active {
+    transform: translateY(0);
+    background: var(--accent-color);
+    color: var(--secondary-color);
+  }
+}
+
+@mixin button-secondary-accueillant {
+  @include f.link-reset;
+  @include f.transition-base(all, var(--transition-medium), ease);
+  @include f.focus-ring(var(--accent-color));
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: t.$button-height-m;
+      padding: 0.9rem 1.35rem;
+  border-radius: var(--radius-button);
+  font-family: var(--font-ui);
+  font-weight: t.$weight-bold;
+  border: var(--cta-secondary-border);
+  background: var(--cta-secondary-bg);
+  color: var(--cta-secondary-color);
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: var(--accent-color);
+    color: var(--primary-color);
+      background: var(--accent-color);
+
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* =============================
+   Règles éditoriales
+============================= */
+
+/* =============================
+   Titres / blocs texte
+============================= */
+
+@mixin title-accueillant {
+  @include f.text-title;
+  color: var(--color-text-strong);
+}
+
+@mixin a-page-title {
+  position: relative;
+  @include f.text-title;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--color-main), var(--accent-color));
+  }
+}
+
+/* =============================
+   Transition générique du thème
+============================= */
+

@@ -1,0 +1,12 @@
+@use "../styles/foundations/foundations" as f;
+
+.legal__container,.privacy__container,.site-map__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: f.$spacing-4;
+  padding: f.$spacing-4;
+  margin-top: f.$spacing-4;
+  margin-bottom: f.$spacing-4;
+}

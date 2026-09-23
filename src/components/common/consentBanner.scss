@@ -1,0 +1,7 @@
+.consent { position: fixed; z-index: 1000; right: 1rem; bottom: 1rem; left: 1rem; max-width: 760px; margin-inline: auto; padding: 1.25rem; display: grid; gap: 1rem; color: var(--color-main); background: var(--background-card); border: 1px solid var(--primary-color); box-shadow: 0 18px 60px rgba(0,0,0,.22); }
+.consent strong { display: block; margin-bottom: .35rem; }
+.consent p { font-size: .88rem; line-height: 1.55; }
+.consent__actions { display: flex; gap: .6rem; justify-content: flex-end; }
+.consent button { padding: .7rem 1rem; border: 1px solid var(--primary-color); background: transparent; color: var(--primary-color); font-weight: 800; }
+.consent button:last-child { background: var(--primary-color); color: var(--background-main); }
+@media (min-width: 700px) { .consent { grid-template-columns: 1fr auto; align-items: center; } }

@@ -1,0 +1,146 @@
+/* =============================
+   🎨 THEME — ACCUEILLANT
+   ============================= */
+.theme-accueillant {
+  /* =============================
+     ✨ Typographies
+     ============================= */
+  --font-title: "Playfair Display", serif;
+  --font-body: "Crimson Text", serif;
+  --font-subtitle: "Montserrat", sans-serif;
+
+  /* =============================
+     🎨 Couleurs principales
+     ============================= */
+  --primary-color: #a9472c; /* terracotta brûlé */
+  --primary-color-rgb: 169, 71, 44;
+
+  --secondary-color: #4b2638; /* prune chocolat */
+  --secondary-color-rgb: 75, 38, 56;
+
+  --tertiary-color: #ffffff;
+  --tertiary-color-rgb: 255, 255, 255;
+
+  --dark-color: black;
+  --dark-color-rgb: 0, 0, 0;
+
+  --light-color: #ffffff;
+  --light-color-rgb: 255, 255, 255;
+
+  --accent-color: #748170; /* sauge minérale */
+  --accent-color-rgb: 116, 129, 112;
+
+  --accent-color-2: #db8a62; /* argile lumineuse */
+  --accent-color-2-rgb: 219, 138, 98;
+
+  --accent-color-3: #f0d8c5; /* ivoire rosé */
+  --accent-color-3-rgb: 240, 216, 197;
+  /* =============================
+     Badges
+     ============================= */
+
+  --background-badge: #ffffff;
+  --color-badge: var(--color-main);
+  --border-badge: 1px solid rgba(var(--primary-color-rgb), 0.12);
+
+  /* =============================
+     Header
+     ============================= */
+  --background-header: #f4eadf;
+  --background-header-rgb: 244, 234, 223;
+
+  --color-header: #4b2638;
+  --color-header-rgb: 75, 38, 56;
+
+  /* =============================
+    Main
+     ============================= */
+  --background-main: #f8f0e7;
+  --background-main-rgb: 248, 240, 231;
+
+  --color-main: #4c3035;
+  --color-main-rgb: 76, 48, 53;
+
+  --color-text-strong: #3c202d;
+  --color-text-strong-rgb: 60, 32, 45;
+
+  --color-text-soft: #7d5f61;
+  --color-text-soft-rgb: 125, 95, 97;
+
+  --background-card: #fffaf5;
+  --background-card-rgb: 255, 250, 245;
+
+  --background-panel: #ead8ca;
+  --background-panel-rgb: 234, 216, 202;
+
+  --background-muted: #efe3d8;
+  --background-muted-rgb: 239, 227, 216;
+
+  --background-main-accueillant:
+    radial-gradient(
+      ellipse 62% 44% at 96% 3%,
+      rgba(var(--accent-color-2-rgb), 0.3),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 54% 38% at 2% 72%,
+      rgba(var(--accent-color-rgb), 0.18),
+      transparent 72%
+    ),
+    radial-gradient(
+      circle at 76% 82%,
+      rgba(var(--primary-color-rgb), 0.1),
+      transparent 25%
+    ),
+    linear-gradient(
+      112deg,
+      rgba(255, 255, 255, 0.54),
+      transparent 36% 68%,
+      rgba(var(--accent-color-2-rgb), 0.08)
+    ),
+    var(--background-main);
+
+  /* =============================
+    Footer
+     ============================= */
+
+  --background-footer: #3c202d;
+  --background-footer-rgb: 60, 32, 45;
+
+  --color-footer: #ffffff; /* ivoire chaud */
+  --color-footer-rgb: 245, 230, 211;
+
+  --cta-primary-bg: var(--color-main);
+  --cta-primary-color: var(--light-color);
+  --cta-primary-border: 1px solid rgba(var(--primary-color-rgb),
+    0.12);
+
+    /* =============================
+     Radius
+  ============================= */
+  --radius-card: 20px;
+  --radius-panel: 24px;
+  --radius-button: 999px;
+  --radius-badge: 999px;
+
+  /* =============================
+     ⏳ Transitions
+     ============================= */
+  --transition-slow: 0.5s ease;
+  --transition-medium: 0.3s ease;
+  --transition-fast: 0.2s ease;
+
+  /* =============================
+     🌫️ Ombres (shadows)
+     ============================= */
+  --shadow-light: 0 5px 18px rgba(75, 38, 56, 0.09);
+  --shadow-medium: 0 14px 38px rgba(75, 38, 56, 0.13);
+  --shadow-heavy: 0 28px 70px rgba(75, 38, 56, 0.18);
+
+  /* =============================
+     🌐 Styles globaux
+     ============================= */
+  background-color: var(--background-main);
+  color: var(--color-main);
+  font-family: var(--font-body);
+}

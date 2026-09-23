@@ -1,0 +1,237 @@
+@use "../styles/foundations/foundations" as f;
+@use "../styles/univers/accueillant/theme" as accueillant;
+@use "../styles/univers/affirme/theme" as affirme;
+@use "../styles/univers/minimaliste/theme" as minimaliste;
+
+.not-found {
+  @include f.page-layout;
+  justify-content: center;
+
+  &__container {
+    @include f.section-layout(f.$spacing-s, f.$spacing-s, f.$spacing-s, center);
+    min-height: 70vh;
+    justify-content: center;
+    padding-block: f.$spacing-l f.$spacing-xl;
+    text-align: center;
+  }
+
+  &__eyebrow {
+    @include f.eyebrow;
+    margin: 0;
+    opacity: 0.78;
+    color: var(--color-text-soft, var(--color-main));
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-badge);
+    font-size: clamp(2.2rem, 7vw, 5rem);
+    font-family: var(--font-title);
+    font-weight: f.$weight-black;
+    line-height: 1;
+    box-shadow: var(--shadow-light);
+  }
+
+  &__title {
+    margin: 0;
+    color: var(--color-text-strong, var(--color-main));
+  }
+
+  &__subtitle {
+    @include f.text-subtitle;
+    margin: 0;
+    font-size: f.$font-size-text;
+    margin: 0;
+    max-width: 700px;
+    font-weight: f.$weight-semibold;
+    line-height: 1.6;
+  }
+
+  &__text {
+    margin: 0;
+    max-width: 700px;
+    line-height: 1.7;
+    color: var(--color-main);
+    opacity: 0.92;
+  }
+
+  &__actions {
+    @include f.cluster(f.$spacing-s, center, center, wrap);
+    margin-top: f.$spacing-xs;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: f.$button-height-m;
+    padding: 0.9rem 1.35rem;
+    border-radius: var(--radius-button);
+    text-decoration: none;
+    font-weight: f.$weight-bold;
+    font-family: var(--font-subtitle);
+  }
+
+  &__button--ghost {
+    background: transparent;
+    border: 1px solid currentColor;
+    box-shadow: none;
+  }
+
+  &__card {
+    @include f.surface-base(f.$spacing-m, var(--radius-panel));
+    @include f.content-flow(0.5rem, 0.5rem, 0.5rem);
+    width: 100%;
+    max-width: 620px;
+    margin-top: f.$spacing-s;
+    text-align: left;
+    border: 1px solid var(--border-subtle);
+
+    h2 {
+      @include f.text-title;
+      margin: 0 0 f.$spacing-xs;
+      font-size: 1.15rem;
+      line-height: 1.2;
+      color: var(--color-text-strong, var(--color-main));
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    a {
+      @include f.link-reset;
+      font-weight: f.$weight-semibold;
+    }
+  }
+
+  @include f.tablet-up {
+    &__container {
+      padding-block: f.$spacing-xl calc(f.$spacing-xl + 1rem);
+    }
+  }
+}
+
+/* =============================
+   THEMES
+============================= */
+
+.theme-accueillant {
+  .not-found {
+    &__badge {
+      background: color-mix(in srgb, var(--secondary-color) 16%, white);
+      color: var(--secondary-color);
+    }
+
+    &__subtitle {
+      color: var(--secondary-color);
+    }
+
+    &__button {
+      &:not(.not-found__button--ghost) {
+        @include accueillant.button-accueillant;
+      }
+    }
+
+    &__button--ghost {
+      @include accueillant.button-secondary-accueillant;
+    }
+
+    &__card {
+      @include accueillant.card-editoriale(f.$spacing-m);
+    }
+
+    &__card a {
+      color: var(--secondary-color);
+
+      &:hover {
+        @include accueillant.hover-accueillant;
+      }
+    }
+  }
+}
+
+.theme-affirme {
+  .not-found {
+    &__badge {
+      background: rgba(var(--primary-color-rgb), 0.12);
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      box-shadow:
+        0 0 0 1px rgba(var(--primary-color-rgb), 0.12) inset,
+        var(--shadow-medium);
+    }
+
+    &__subtitle {
+      color: var(--primary-color);
+      filter: drop-shadow(0 0 10px rgba(var(--accent-color-rgb), 0.32));
+    }
+
+    &__button:not(.not-found__button--ghost) {
+      @include affirme.button-affirme;
+    }
+
+    &__button--ghost {
+      @include affirme.button-secondary-affirme;
+    }
+
+    &__card {
+      @include affirme.terminal-window(f.$spacing-m, 38px);
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(var(--primary-color-rgb), 0.06),
+          rgba(var(--accent-color-rgb), 0.025)
+        ),
+        var(--background-card);
+    }
+
+    &__card a {
+      color: var(--primary-color);
+
+      &:hover {
+        @include affirme.hover-affirme;
+      }
+    }
+  }
+}
+
+.theme-minimaliste {
+  .not-found {
+    &__badge {
+      background: color-mix(in srgb, var(--primary-color) 10%, white);
+      color: var(--primary-color);
+    }
+
+    &__subtitle {
+      color: var(--accent-color-2);
+    }
+
+    &__button:not(.not-found__button--ghost) {
+      @include minimaliste.button-minimaliste;
+    }
+
+    &__button--ghost {
+      @include minimaliste.button-secondary-minimaliste;
+    }
+
+    &__card {
+      @include minimaliste.card-process(f.$spacing-m);
+    }
+
+    &__card a {
+      color: var(--primary-color);
+
+      &:hover {
+        @include minimaliste.hover-minimaliste;
+      }
+    }
+  }
+}

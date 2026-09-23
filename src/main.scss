@@ -1,0 +1,356 @@
+@use "./styles/foundations/foundations" as f;
+@use "./styles/univers/accueillant/theme" as accueillant;
+@use "./styles/univers/affirme/theme" as affirme;
+@use "./styles/univers/minimaliste/theme" as minimaliste;
+
+/* =====================================
+   RESET GLOBAL
+===================================== */
+:root {
+  --minimal-header-width: 280px;
+  --minimal-content-offset: 130px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body), system-ui, Arial, sans-serif;
+  line-height: f.$line-height-normal;
+  font-weight: f.$weight-regular;
+  color: var(--color-main);
+  background: var(--background-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+
+  @include f.transition-base(
+    background-color color,
+    f.$duration-medium,
+    f.$ease-soft
+  );
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* =====================================
+   TYPOGRAPHIE GLOBALE
+===================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: var(--font-title);
+  color: var(--primary-color);
+
+  @include f.transition-base(color, f.$duration-medium, f.$ease-soft);
+}
+
+p {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-main);
+}
+
+@include f.mobile-up {
+  h1 {
+    font-size: f.$font-size-title;
+  }
+}
+
+/* =====================================
+   STRUCTURE GLOBALE
+===================================== */
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 12px 32px;
+  background: var(--background-main);
+}
+
+@include f.tablet-up {
+  main {
+    padding: 62px 12px 32px;
+  }
+}
+
+@media (max-width: #{f.$tablet}) {
+  main {
+    padding: 56px 8px 28px;
+  }
+}
+
+section {
+  width: 100%;
+  max-width: f.$container-xl;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* variantes */
+.section--row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: f.$spacing-m;
+  padding-bottom: f.$spacing-xs;
+}
+
+@media (min-width: 1025px) {
+  .theme-minimaliste {
+    .section--row {
+      justify-content: flex-start;
+      gap: 24px;
+    }
+
+    .section--grid {
+      justify-items: stretch;
+    }
+  }
+}
+
+.section--grid {
+  display: grid;
+  justify-items: center;
+  align-items: stretch;
+  width: 100%;
+  gap: f.$spacing-m;
+}
+
+@media (max-width: #{f.$tablet}) {
+  .section--row {
+    flex-wrap: wrap;
+  }
+}
+
+/* =====================================
+   TITRES COMMUNS
+===================================== */
+
+.header-page {
+  @include f.content-flow;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-title {
+  position: relative;
+  margin-bottom: f.$spacing-s;
+  text-align: center;
+  font-weight: f.$weight-bold;
+  font-size: 2rem;
+  line-height: 1.2;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--color-main), var(--accent-color));
+  }
+}
+
+.page-title-small {
+  position: relative;
+  margin-bottom: f.$spacing-s;
+  text-align: center;
+  font-weight: f.$weight-bold;
+  font-size: 1.5rem;
+  line-height: 1.2;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--color-main), var(--accent-color));
+  }
+}
+
+.section-title {
+  margin-bottom: f.$spacing-s;
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(
+      to right,
+      var(--primary-color),
+      var(--accent-color)
+    )
+    1;
+}
+
+@media (max-width: #{f.$mobile}) {
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .page-title-small {
+    font-size: 1.2rem;
+  }
+}
+
+/* =============================
+   THEMES
+============================= */
+
+.theme-accueillant {
+  .app,
+  main {
+    background: var(--background-main-accueillant);
+    background-attachment: fixed;
+  }
+
+  .page-title,
+  .page-title-small,
+  .section-title {
+    @include accueillant.title-accueillant;
+  }
+}
+
+.theme-affirme {
+  .app,
+  main {
+    background: var(--background-main-affirme);
+    background-size: var(--background-main-affirme-size);
+    background-attachment: fixed;
+    animation: affirme-background-drift 18s ease-in-out infinite alternate;
+  }
+  .page-title,
+  .page-title-small,
+  .section-title {
+    @include affirme.title-affirme;
+  }
+
+  .page-title::after,
+  .page-title-small::after {
+    @include affirme.linear-gradient-affirme;
+  }
+}
+
+@keyframes affirme-background-drift {
+  from {
+    background-position: 100% 0, 0 80%, 20% 30%, 0 0;
+  }
+
+  to {
+    background-position: 82% 8%, 12% 92%, 70% 58%, 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-affirme .app,
+  .theme-affirme main {
+    animation: none;
+  }
+}
+
+.theme-minimaliste {
+  .app,
+  main {
+    background: var(--background-main-industriel);
+    background-size:
+      var(--background-main-industriel-size-noise-1),
+      var(--background-main-industriel-size-noise-2),
+      var(--background-main-industriel-size-grid),
+      var(--background-main-industriel-size-grid), auto;
+  }
+
+  .page-title,
+  .page-title-small,
+  .section-title {
+    @include minimaliste.title-minimaliste;
+  }
+}
+
+@media (min-width: 1025px) {
+  .theme-minimaliste main {
+    width: calc(100% - var(--minimal-content-offset));
+    margin-left: var(--minimal-content-offset);
+    padding: 32px 40px;
+    min-height: 100vh;
+    align-items: flex-start;
+  }
+
+  .theme-minimaliste section {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+}

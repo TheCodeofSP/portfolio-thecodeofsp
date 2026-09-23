@@ -1,0 +1,178 @@
+@use "../../styles/foundations/foundations.scss" as f;
+@use "../../styles/univers/accueillant/theme.scss" as accueillant;
+@use "../../styles/univers/affirme/theme.scss" as affirme;
+@use "../../styles/univers/minimaliste/theme.scss" as minimaliste;
+
+/* =============================
+   HEADER
+============================= */
+
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 900;
+  width: 100%;
+  height: 76px;
+  border-bottom: 1px solid rgba(var(--color-header-rgb), 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(var(--background-header-rgb), 0.88);
+
+  @include f.transition-base(
+    background border-color box-shadow,
+    var(--transition-medium),
+    ease
+  );
+
+  &__container {
+    @include f.container(f.$container-xl, f.$spacing-s);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: f.$spacing-s;
+    height: 100%;
+  }
+
+  &__logo-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    background: none;
+    text-decoration: none;
+    cursor: pointer;
+
+    @include f.transition-base(
+      transform opacity background-color,
+      var(--transition-fast),
+      ease
+    );
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 4px;
+    }
+  }
+
+  &__logo {
+    display: block;
+    width: 260px;
+    height: 80px;
+    will-change: filter;
+
+    @include f.transition-base(
+      filter transform opacity,
+      var(--transition-fast),
+      ease
+    );
+  }
+
+  &__logo-link:hover &__logo {
+    transform: scale(1.03);
+    filter: brightness(1.04);
+  }
+}
+
+/* =============================
+   RESPONSIVE
+============================= */
+
+@media (min-width: 768px) {
+  .header {
+    height: 82px;
+
+    &__container {
+      gap: f.$spacing-m;
+      padding-inline: f.$spacing-m;
+    }
+
+    &__logo {
+      height: 1.55rem;
+      width: auto;
+    }
+  }
+}
+
+/* =============================
+   THEMES
+============================= */
+
+.theme-accueillant {
+  .header {
+    background-color: rgba(var(--background-header-rgb), 0.92);
+    border-bottom-color: rgba(var(--color-main-rgb), 0.16);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.theme-affirme {
+  .header {
+    background:
+      linear-gradient(
+        to right,
+        rgba(var(--primary-color-rgb), 0.05),
+        rgba(var(--accent-color-rgb), 0.025)
+      ),
+      rgba(var(--background-header-rgb), 0.92);
+    border-bottom-color: rgba(var(--color-header-rgb), 0.22);
+    box-shadow:
+      inset 0 -1px 0 rgba(var(--accent-color-rgb), 0.08),
+      0 8px 24px rgba(0, 0, 0, 0.14);
+  }
+
+  .header__logo-link:hover {
+    background: rgba(var(--primary-color-rgb), 0.04);
+  }
+
+  .header__logo-link:hover .header__logo {
+    filter: brightness(1.08);
+  }
+}
+
+.theme-minimaliste {
+  .header {
+    background-color: rgba(var(--background-header-rgb), 0.92);
+    border-bottom-color: rgba(var(--color-header-rgb), 0.1);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* =============================
+   MINIMALISTE : HEADER À GAUCHE
+============================= */
+
+@media (min-width: 1025px) {
+  .theme-minimaliste .header {
+    inset: 0 auto 0 0;
+    width: var(--minimal-header-width);
+    height: 100vh;
+    border-bottom: none;
+    border-right: 1px solid rgba(var(--color-header-rgb), 0.08);
+    box-shadow: 8px 0 24px rgba(0, 0, 0, 0.04);
+  }
+
+  .theme-minimaliste .header__container {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    padding: 32px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 32px;
+  }
+
+  .theme-minimaliste .header__logo-link {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+}

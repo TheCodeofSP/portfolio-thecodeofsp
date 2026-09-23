@@ -1,0 +1,125 @@
+@use "../styles/foundations/foundations" as f;
+@use "../styles/univers/accueillant/theme" as accueillant;
+@use "../styles/univers/affirme/theme" as affirme;
+@use "../styles/univers/minimaliste/theme" as minimaliste;
+
+:is(.legal, .privacy, .site-map) {
+  @include f.page-layout;
+  justify-content: center;
+
+  :is(.legal__header, .privacy__header, .site-map__header) {
+    @include f.section-layout;
+    padding-block: f.$spacing-l f.$spacing-xl;
+    text-align: center;
+  }
+
+  .page-title {
+    margin: 0;
+    @include f.text-title;
+  }
+
+  .page-subtitle {
+    max-width: 62ch;
+    margin-inline: auto;
+    @include f.text-body;
+    opacity: 0.88;
+  }
+
+  :is(.legal__content, .privacy__content, .site-map__content) {
+    display: grid;
+    gap: f.$spacing-m;
+  }
+
+  :is(.legal__block, .privacy__block, .site-map__block) {
+    @include f.content-flow(f.$spacing-xs, f.$spacing-xs, f.$spacing-s);
+
+    h2 {
+      margin: 0;
+      @include f.text-subtitle;
+      color: var(--color-text-strong, var(--color-main));
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.7;
+      color: var(--color-main);
+      opacity: 0.92;
+    }
+
+    strong {
+      color: var(--color-text-strong, var(--color-main));
+    }
+  }
+
+  :is(.privacy__block, .site-map__block) {
+    ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    li {
+      line-height: 1.65;
+      color: var(--color-main);
+      opacity: 0.92;
+    }
+  }
+
+  .site-map__block a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.15rem;
+  }
+
+  @include f.tablet-up {
+    :is(.legal__header, .privacy__header, .site-map__header) {
+      padding-block: f.$spacing-xl calc(f.$spacing-xl + 1rem);
+    }
+
+    :is(.legal__content, .privacy__content, .site-map__content) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
+
+:is(.legal.theme-accueillant, .privacy.theme-accueillant, .site-map.theme-accueillant) {
+  .page-title,
+  :is(.legal__block, .privacy__block, .site-map__block) h2 {
+    @include accueillant.title-accueillant;
+  }
+
+  :is(.legal__block, .privacy__block, .site-map__block) {
+    @include accueillant.card-editoriale(1.35rem);
+  }
+}
+
+:is(.legal.theme-affirme, .privacy.theme-affirme, .site-map.theme-affirme) {
+  .page-title,
+  :is(.legal__block, .privacy__block, .site-map__block) h2 {
+    @include affirme.title-affirme;
+  }
+
+  :is(.legal__block, .privacy__block, .site-map__block) {
+    @include affirme.panel-terminal(1.35rem);
+  }
+}
+
+:is(.legal.theme-minimaliste, .privacy.theme-minimaliste, .site-map.theme-minimaliste) {
+  .page-title,
+  :is(.legal__block, .privacy__block, .site-map__block) h2 {
+    @include minimaliste.title-minimaliste;
+  }
+
+  :is(.legal__block, .privacy__block, .site-map__block) {
+    @include minimaliste.card-process(1.35rem);
+  }
+}
+
+.legal__container,.privacy__container,.site-map__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: f.$spacing-m;
+
+}

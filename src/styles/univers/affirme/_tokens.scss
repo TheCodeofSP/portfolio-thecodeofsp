@@ -1,0 +1,199 @@
+/* =========================================================
+   UNIVERS — AFFIRME
+   Inspiration : terminal / fenêtres / cockpit / SaaS ambitieux
+   ========================================================= */
+
+.theme-affirme {
+  /* =============================
+     Typographies
+  ============================= */
+  --font-title: "Share Tech Mono", monospace;
+  --font-body: "Rajdhani", sans-serif;
+  --font-subtitle: "Orbitron", sans-serif;
+  --font-ui: "Rajdhani", sans-serif;
+
+  /* =============================
+     Couleurs de marque
+  ============================= */
+  --primary-color: #7c5cff;
+  --primary-color-rgb: 124, 92, 255;
+
+  --secondary-color: #050814;
+  --secondary-color-rgb: 5, 8, 20;
+
+  --accent-color: #49d5ff;
+  --accent-color-rgb: 73, 213, 255;
+
+  --accent-color-2: #00ff66;
+  --accent-color-2-rgb: 0, 255, 102;
+
+  --accent-color-3: #efff00;
+  --accent-color-3-rgb: 239, 255, 0;
+
+  --dark-color: #02040a;
+  --dark-color-rgb: 2, 4, 10;
+
+  --light-color: #eef2ff;
+  --light-color-rgb: 238, 242, 255;
+
+  --text-accent: #b6a6ff;
+  --text-accent-rgb: 182, 166, 255;
+
+  /* =============================
+     Contrôles fenêtre (inspiration desktop)
+  ============================= */
+  --window-control-close: #ff5f57;
+  --window-control-close-rgb: 255, 95, 87;
+
+  --window-control-minimize: #febc2e;
+  --window-control-minimize-rgb: 254, 188, 46;
+
+  --window-control-expand: #28c840;
+  --window-control-expand-rgb: 40, 200, 64;
+
+  /* =============================
+     Surfaces principales
+  ============================= */
+  --background-header: #120f24;
+  --background-header-rgb: 18, 15, 36;
+
+  --background-main: #070611;
+  --background-main-rgb: 7, 6, 17;
+
+  --background-card: #111022;
+  --background-card-rgb: 17, 16, 34;
+
+  --background-panel: #17142d;
+  --background-panel-rgb: 23, 20, 45;
+
+  --background-muted: #0d0b1d;
+  --background-muted-rgb: 13, 11, 29;
+
+  --background-footer: #0a0917;
+  --background-footer-rgb: 10, 9, 23;
+
+  /* =============================
+   Décor énergique
+============================= */
+  --background-main-affirme:
+    radial-gradient(
+      ellipse 72% 46% at 92% 4%,
+      rgba(var(--accent-color-rgb), 0.22),
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 58% 42% at 3% 78%,
+      rgba(var(--accent-color-2-rgb), 0.14),
+      transparent 70%
+    ),
+    linear-gradient(
+      118deg,
+      transparent 0 18%,
+      rgba(var(--primary-color-rgb), 0.055) 18.2% 18.8%,
+      transparent 19% 42%,
+      rgba(var(--accent-color-rgb), 0.075) 42.3% 43.5%,
+      transparent 43.8% 70%,
+      rgba(var(--accent-color-2-rgb), 0.045) 70.3% 71%,
+      transparent 71.3% 100%
+    ),
+    linear-gradient(
+      118deg,
+      rgba(var(--background-main-rgb), 0.98) 0%,
+      rgba(var(--background-panel-rgb), 0.92) 48%,
+      rgba(var(--background-main-rgb), 0.99) 100%
+    );
+
+  --background-main-affirme-size: auto, auto, 150% 150%, auto;
+
+  /* =============================
+     Textes
+  ============================= */
+  --color-header: #9f8cff;
+  --color-header-rgb: 159, 140, 255;
+
+  --color-main: #e6e4f5;
+  --color-main-rgb: 230, 228, 245;
+
+  --color-text-strong: #f7f4ff;
+  --color-text-strong-rgb: 247, 244, 255;
+
+  --color-text-soft: #9a96b8;
+  --color-text-soft-rgb: 154, 150, 184;
+
+  --color-footer: #d9d5f2;
+  --color-footer-rgb: 217, 213, 242;
+
+  /* =============================
+     Bordures / structure fenêtre
+  ============================= */
+  --border-subtle: rgba(124, 92, 255, 0.12);
+  --border-medium: rgba(124, 92, 255, 0.22);
+  --border-strong: rgba(73, 213, 255, 0.42);
+
+  --divider-color: rgba(124, 92, 255, 0.12);
+  --frame-glow: rgba(73, 213, 255, 0.18);
+  --screen-line-color: rgba(73, 213, 255, 0.1);
+
+  /* =============================
+     Badges
+  ============================= */
+  --background-badge: rgba(124, 92, 255, 0.1);
+  --color-badge: var(--primary-color);
+  --border-badge: 1px solid rgba(124, 92, 255, 0.2);
+
+  /* =============================
+     Boutons / CTA
+  ============================= */
+  --cta-primary-bg: var(--primary-color);
+  --cta-primary-color: #080512;
+  --cta-primary-border: 1px solid rgba(124, 92, 255, 0.28);
+
+  --cta-secondary-bg: transparent;
+  --cta-secondary-color: var(--primary-color);
+  --cta-secondary-border: 1px solid rgba(124, 92, 255, 0.3);
+
+  /* =============================
+     Liens
+  ============================= */
+  --link-color: var(--accent-color);
+  --link-color-hover: var(--accent-color-2);
+  --link-underline-color: rgba(73, 213, 255, 0.36);
+
+  /* =============================
+     Ombres / glow
+  ============================= */
+  --shadow-light: 0 0 14px rgba(124, 92, 255, 0.1);
+  --shadow-medium: 0 0 26px rgba(124, 92, 255, 0.14);
+  --shadow-heavy: 0 0 42px rgba(73, 213, 255, 0.18);
+
+  /* =============================
+     Décor terminal
+  ============================= */
+  --terminal-grid-opacity: 0.07;
+  --scanline-opacity: 0.05;
+  --noise-opacity: 0.025;
+  --panel-highlight-opacity: 0.14;
+
+  /* =============================
+     Radius
+  ============================= */
+  --radius-card: 12px;
+  --radius-panel: 16px;
+  --radius-button: 999px;
+  --radius-badge: 999px;
+
+  /* =============================
+     Transitions
+  ============================= */
+  --transition-fast: 140ms ease-out;
+  --transition-medium: 220ms ease-out;
+  --transition-slow: 360ms ease-out;
+
+  /* =============================
+     Style global du thème
+  ============================= */
+  background-color: var(--background-main);
+  color: var(--color-main);
+  font-family: var(--font-body);
+  color-scheme: dark;
+}

@@ -1,0 +1,391 @@
+@use "../../styles/foundations/foundations.scss" as f;
+@use "../../styles/univers/accueillant/theme.scss" as accueillant;
+@use "../../styles/univers/affirme/theme.scss" as affirme;
+@use "../../styles/univers/minimaliste/theme.scss" as minimaliste;
+
+/* =============================
+   FOOTER
+============================= */
+
+.footer {
+  position: relative;
+  z-index: 50;
+  box-sizing: border-box;
+  background-color: var(--background-footer);
+  color: var(--color-footer);
+
+  @include f.transition-base(
+    background-color color,
+    var(--transition-medium),
+    ease
+  );
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      var(--accent-color),
+      var(--secondary-color)
+    );
+    opacity: 0.95;
+  }
+
+  &__container {
+    @include f.container(f.$container-xl, f.$spacing-s);
+    @include f.content-flow(f.$spacing-m);
+    min-height: 280px;
+    padding-block: f.$spacing-s;
+    text-align: center;
+  }
+
+  &__contact,
+  &__bottom {
+    @include f.content-flow(f.$spacing-s);
+  }
+
+  &__intro {
+    @include f.content-flow(f.$spacing-s);
+  }
+
+  &__eyebrow,
+  &__description,
+  &__rights {
+    margin: 0;
+    color: var(--color-footer);
+  }
+
+  &__eyebrow {
+    @include f.eyebrow;
+    font-size: 0.76rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: 1.35rem;
+    line-height: 1.15;
+    color: var(--accent-color);
+  }
+
+  &__title--brand {
+    line-height: 0;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    line-height: 1.3;
+    color: var(--accent-color);
+  }
+
+  &__description {
+    max-width: 560px;
+    margin-inline: auto;
+    font-size: 0.94rem;
+    line-height: 1.7;
+    opacity: 0.92;
+  }
+
+  &__logo-link {
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  &__logo {
+    display: block;
+    width: min(260px, 100%);
+    height: 60px;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  &__contact-block {
+    margin: 0;
+  }
+
+  &__contact-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: inherit;
+    text-decoration: none;
+    border-radius: var(--radius-button);
+
+    @include f.transition-base(
+      color transform opacity background-color box-shadow border-color,
+      var(--transition-fast),
+      ease
+    );
+
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      flex-shrink: 0;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .footer__icon-dot {
+      fill: currentColor;
+      stroke: none;
+    }
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-1px);
+    }
+  }
+
+  &__icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+    }
+  }
+
+  &__bottom {
+    align-items: center;
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1rem;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      @include f.transition-base(
+        color opacity background-color box-shadow border-color transform,
+        var(--transition-fast),
+        ease
+      );
+
+      &:hover,
+      &:focus-visible {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  &__settings-button {
+    padding: 0;
+    color: inherit;
+    background: transparent;
+    border: 0;
+    font: inherit;
+    cursor: pointer;
+
+    @include f.transition-base(
+      color opacity background-color box-shadow border-color transform,
+      var(--transition-fast),
+      ease
+    );
+
+    &:hover,
+    &:focus-visible {
+      opacity: 0.75;
+    }
+  }
+
+  &__copyright {
+    @include f.content-flow(0.2rem);
+  }
+
+  &__rights {
+    font-family: var(--font-subtitle);
+    font-size: 0.84rem;
+    line-height: 1.5;
+    text-align: center;
+    opacity: 0.82;
+  }
+}
+
+/* =============================
+   RESPONSIVE
+============================= */
+
+@media (min-width: 768px) {
+  .footer {
+    &__container {
+      flex-direction: row;
+      padding-block: f.$spacing-l;
+      padding-inline: f.$spacing-m;
+    }
+
+    &__intro {
+      text-align: left;
+    }
+
+    &__contact {
+      align-self: flex-start;
+      justify-content: flex-start;
+      padding-top: 0;
+    }
+
+    &__title {
+      font-size: 1.6rem;
+    }
+
+    &__description {
+      font-size: 0.98rem;
+      margin-inline: 0;
+    }
+
+    &__subtitle {
+      font-size: 1.5rem;
+    }
+
+    &__links {
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0;
+    }
+
+    &__bottom {
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  }
+}
+
+/* =============================
+   THEMES
+============================= */
+
+.theme-accueillant {
+  .footer {
+    background-color: var(--background-footer);
+    color: var(--color-footer);
+
+    &__title {
+      @include accueillant.title-accueillant;
+      color: var(--accent-color-3);
+    }
+
+    &__eyebrow {
+      color: var(--accent-color-3);
+    }
+
+    &__subtitle,
+    &__description,
+    &__rights,
+    &__links a {
+      color: #fff8f1;
+    }
+
+    &__contact-link {
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    &__contact-link:hover,
+    &__contact-link:focus-visible {
+      color: #4b2434;
+      border-color: var(--accent-color-3);
+      background: var(--accent-color-3);
+      box-shadow: 0 8px 22px rgba(20, 6, 12, 0.28);
+    }
+
+    &__links a:hover,
+    &__links a:focus-visible {
+      color: var(--accent-color-3);
+      opacity: 1;
+    }
+  }
+}
+
+.theme-affirme {
+  .footer {
+    background:
+      linear-gradient(
+        to top,
+        rgba(var(--primary-color-rgb), 0.04),
+        rgba(var(--accent-color-rgb), 0.015)
+      ),
+      var(--background-footer);
+    color: var(--color-footer);
+
+    &__title,
+    &__subtitle {
+      @include affirme.title-affirme;
+    }
+
+    &__eyebrow {
+      @include affirme.eyebrow-affirme;
+    }
+
+    &__description,
+    &__contact-link,
+    &__rights {
+      color: var(--color-footer);
+    }
+
+    &__contact-link,
+    &__links a {
+      padding: 0.15rem 0.35rem;
+      border-radius: 8px;
+    }
+
+    &__contact-link:hover,
+    &__links a:hover {
+      @include affirme.hover-affirme-tag;
+    }
+  }
+}
+
+.theme-minimaliste {
+  .footer {
+    color: var(--color-footer);
+
+    &__title,
+    &__subtitle {
+      @include minimaliste.title-minimaliste;
+      color: var(--accent-color);
+    }
+
+    &__description,
+    &__links,
+    &__links a {
+      color: var(--color-footer);
+    }
+
+    &__contact-link,
+    &__links a {
+      border-radius: 8px;
+    }
+
+    &__contact-link:hover,
+    &__links a:hover {
+      color: var(--accent-color);
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .theme-minimaliste {
+    .footer {
+      padding-left: 280px;
+    }
+  }
+}

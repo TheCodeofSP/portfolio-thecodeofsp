@@ -1,0 +1,16 @@
+{
+  "name": "The Code of SP",
+  "short_name": "The Code of SP",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "description": "Conception, développement et mise en ligne de sites et applications web sur mesure.",
+  "icons": [
+    {
+      "src": "/the-code-of-sp-icon.png",
+      "sizes": "2000x2000",
+      "type": "image/png"
+    }
+  ]
+}

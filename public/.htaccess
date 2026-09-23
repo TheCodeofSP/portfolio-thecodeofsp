@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Une seule adresse officielle : HTTPS sans www.
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.thecodeofsp\.fr$ [NC]
+RewriteRule ^ https://thecodeofsp.fr%{REQUEST_URI} [R=301,L]
+
+# React Router : les routes qui ne correspondent pas à un fichier réel
+# sont renvoyées vers l’application.
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]

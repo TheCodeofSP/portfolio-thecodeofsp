@@ -1,0 +1,178 @@
+/* =========================================================
+   UNIVERS — MINIMALISTE
+   Inspiration : process industriel / précision / efficacité
+   ========================================================= */
+
+.theme-minimaliste {
+  /* =============================
+     Typographies
+  ============================= */
+  --font-title: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-subtitle: "Poppins", sans-serif;
+  --font-ui: "Inter", sans-serif;
+
+  /* =============================
+     Couleurs de marque
+  ============================= */
+  --primary-color: #111111;
+  --primary-color-rgb: 17, 17, 17;
+
+  --secondary-color: #ffffff;
+  --secondary-color-rgb: 255, 255, 255;
+
+  --tertiary-color: #626262;
+  --tertiary-color-rgb: 98, 98, 98;
+
+  --accent-color: #2f6bff;
+  --accent-color-rgb: 47, 107, 255;
+
+  --accent-color-2: #1748b8;
+  --accent-color-2-rgb: 23, 72, 184;
+
+  --dark-color: #0b0b0b;
+  --dark-color-rgb: 11, 11, 11;
+
+  --light-color: #ffffff;
+  --light-color-rgb: 255, 255, 255;
+
+  /* =============================
+     Surfaces principales
+  ============================= */
+  --background-header: #ffffff;
+  --background-header-rgb: 255, 255, 255;
+
+  --background-main: #f7f8f9;
+  --background-main-rgb: 247, 248, 249;
+
+  --background-card: #ffffff;
+  --background-card-rgb: 255, 255, 255;
+
+  --background-panel: #eef1f4;
+  --background-panel-rgb: 238, 241, 244;
+
+  --background-muted: #e4e8ec;
+  --background-muted-rgb: 228, 232, 236;
+
+  --background-footer: #15171a;
+  --background-footer-rgb: 21, 23, 26;
+
+  /* =============================
+     Textes
+  ============================= */
+  --color-header: #111111;
+  --color-header-rgb: 17, 17, 17;
+
+  --color-main: #2d3136;
+  --color-main-rgb: 45, 49, 54;
+
+  --color-text-strong: #0f1216;
+  --color-text-strong-rgb: 15, 18, 22;
+
+  --color-text-soft: #6d7580;
+  --color-text-soft-rgb: 109, 117, 128;
+
+  --color-footer: #ffffff;
+  --color-footer-rgb: 255, 255, 255;
+
+  /* =============================
+     Bordures / structure process
+  ============================= */
+  --border-subtle: rgba(17, 17, 17, 0.08);
+  --border-medium: rgba(17, 17, 17, 0.14);
+  --border-strong: rgba(17, 17, 17, 0.24);
+
+  --divider-color: rgba(17, 17, 17, 0.1);
+  --grid-line-color: rgba(17, 17, 17, 0.06);
+  --technical-line-color: rgba(47, 107, 255, 0.16);
+
+  /* =============================
+     Badges
+  ============================= */
+  --background-badge: #f3f6fb;
+  --color-badge: #1a4ed8;
+  --border-badge: 1px solid rgba(47, 107, 255, 0.14);
+
+  /* =============================
+     Boutons / CTA
+  ============================= */
+  --cta-primary-bg: #111111;
+  --cta-primary-color: #ffffff;
+  --cta-primary-border: 1px solid #111111;
+
+  --cta-secondary-bg: #ffffff;
+  --cta-secondary-color: #111111;
+  --cta-secondary-border: 1px solid rgba(17, 17, 17, 0.18);
+
+  /* =============================
+     Liens
+  ============================= */
+  --link-color: var(--accent-color);
+  --link-color-hover: var(--accent-color-2);
+  --link-underline-color: rgba(47, 107, 255, 0.25);
+
+  /* =============================
+     Ombres
+  ============================= */
+  --shadow-light: 0 1px 4px rgba(15, 18, 22, 0.04);
+  --shadow-medium: 0 6px 18px rgba(15, 18, 22, 0.08);
+  --shadow-heavy: 0 16px 42px rgba(15, 18, 22, 0.14);
+
+  /* =============================
+     Décor industriel
+  ============================= */
+  --grid-opacity: 0.18;
+  --noise-opacity: 0.015;
+  --panel-highlight-opacity: 0.4;
+  --measure-line-opacity: 0.16;
+
+--background-main-industriel:
+  radial-gradient(
+    circle at 20% 20%,
+    rgba(var(--primary-color-rgb), 0.04) 0.4px,
+    transparent 0.5px
+  ),
+  radial-gradient(
+    circle at 80% 60%,
+    rgba(var(--primary-color-rgb), 0.03) 0.35px,
+    transparent 0.45px
+  ),
+  linear-gradient(
+    to right,
+    rgba(var(--primary-color-rgb), 0.035) 1px,
+    transparent 1px
+  ),
+  linear-gradient(
+    to bottom,
+    rgba(var(--primary-color-rgb), 0.035) 1px,
+    transparent 1px
+  ),
+  var(--background-main);
+
+--background-main-industriel-size-noise-1: 18px 18px;
+--background-main-industriel-size-noise-2: 22px 22px;
+--background-main-industriel-size-grid: 32px 32px;
+
+  /* =============================
+     Radius
+  ============================= */
+--radius-card: 8px;
+--radius-panel: 12px;
+--radius-button: 10px;
+--radius-badge: 999px;
+
+  /* =============================
+     Transitions
+  ============================= */
+  --transition-fast: 120ms ease-out;
+  --transition-medium: 200ms ease-out;
+  --transition-slow: 280ms ease-out;
+
+  /* =============================
+     Style global du thème
+  ============================= */
+  background-color: var(--background-main);
+  color: var(--color-main);
+  font-family: var(--font-body);
+  color-scheme: light;
+}
